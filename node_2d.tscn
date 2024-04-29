@@ -10,7 +10,7 @@
 size = Vector2(512, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mit5l"]
-size = Vector2(256, 192)
+size = Vector2(192, 128)
 
 [node name="Node2D" type="Node2D"]
 
@@ -43,9 +43,9 @@ script = ExtResource("4_owiyu")
 shape = SubResource("RectangleShape2D_mit5l")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Node2D/DominoTrashCan"]
-offset_left = -72.0
+offset_left = -80.0
 offset_top = -16.0
-offset_right = 80.0
+offset_right = 72.0
 offset_bottom = 16.0
 bbcode_enabled = true
 text = "[center][font_size=20]Delete domino[/font_size][/center]"
