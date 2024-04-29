@@ -20,7 +20,8 @@ func _ready():
 	left_value = randi_range(0,6)
 	#set_physics_process(false)
 	#custom_integrator = true
-	var domino_field = get_parent().find_child("DominoField")
+	var domino_field = get_parent().get_parent().find_child("DominoField")
+	var domino_trash_can = get_parent().get_parent().find_child("DominoTrashCan")
 	connect("domino_placed", domino_field._on_domino_placed.bind(self))
 	connect("domino_picked", domino_field._on_domino_picked.bind(self))
 	size = domino_field.size*0.9/domino_field.n_side
@@ -61,11 +62,9 @@ func _process(delta):
 		rotate = false
 
 func increase_scale():
-	print(scale)
 	scale *= 1.05
 	
 func reduce_scale():
-	print(scale)
 	scale /= 1.05
 	
 
