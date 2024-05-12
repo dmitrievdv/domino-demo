@@ -8,7 +8,7 @@ var occupied = []
 signal HUD_redraw
 
 func _init():
-	n_side = 4
+	n_side = 6
 	for i in n_side:
 		for j in n_side:
 			field.append(0)
@@ -18,7 +18,8 @@ func _draw():
 	var cell_size = size*1.0/n_side
 	var half_size = size*1.0/2
 	draw_rect(Rect2(-half_size, -half_size, size, size), Color.GREEN, false, 3)
-	for line_coord in range(-half_size + cell_size, half_size, cell_size):
+	for i in range(1,n_side):
+		var line_coord = -half_size + i*cell_size
 		draw_line(Vector2(line_coord, half_size), Vector2(line_coord, -half_size), Color.GREEN, 1)
 		draw_line(Vector2(half_size, line_coord), Vector2(-half_size, line_coord), Color.GREEN, 1)
 
@@ -43,8 +44,8 @@ func get_cell_coords(cell_id: int):
 	var i = cell_id/n_side
 	var j = cell_id%n_side
 	var cell_size = size*1.0/n_side
-	var x = i*cell_size + cell_size/2 - size/2
-	var y = j*cell_size + cell_size/2 - size/2
+	var x = i*cell_size + cell_size/2 - size/2.0
+	var y = j*cell_size + cell_size/2 - size/2.0
 	return Vector2(x, y)
 
 func coords_in_field(coords: Vector2):

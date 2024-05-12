@@ -11,13 +11,14 @@ func _draw():
 	var size = domino_field.size
 	var n_side = domino_field.n_side
 	var field = domino_field.field
-	var cell_size = size/4
-	var half_size = size/2
+	var cell_size = size/n_side
+	var half_size = size/2.0
+	var font_scale = 4.0/n_side
 	for i in n_side:
 		for j in n_side:
 			var string = str(field[i*n_side + j])
-			draw_string(default_font, Vector2(cell_size*i - half_size+5, cell_size*j+20 - half_size), 
-							string, HORIZONTAL_ALIGNMENT_LEFT, -1, 20 ,Color.RED)
+			draw_string(default_font, Vector2(cell_size*i - half_size+5*font_scale, cell_size*j+20*font_scale - half_size), 
+							string, HORIZONTAL_ALIGNMENT_LEFT, -1, 20*font_scale ,Color.RED)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

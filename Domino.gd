@@ -10,6 +10,7 @@ var rotate: bool = false
 var left_value: int
 var right_value: int 
 var placed_in_field = false
+var font_scale = 1
 
 signal domino_picked
 signal domino_placed
@@ -25,6 +26,7 @@ func _ready():
 	connect("domino_placed", domino_field._on_domino_placed.bind(self))
 	connect("domino_picked", domino_field._on_domino_picked.bind(self))
 	size = domino_field.size*0.9/domino_field.n_side
+	font_scale = 4.0/domino_field.n_side
 	var area = Area2D.new()
 	var shape = CollisionShape2D.new()
 	shape.shape = RectangleShape2D.new()
@@ -70,10 +72,10 @@ func reduce_scale():
 
 func _draw():
 	draw_rect(Rect2(-size, -size/2, size*2, size), Color.YELLOW, 1)
-	draw_string(default_font, Vector2(-size/2-20, 20), str(left_value), 
-						HORIZONTAL_ALIGNMENT_LEFT, -1, 60, Color.BLUE)
-	draw_string(default_font, Vector2(size/2-20, 20), str(right_value), 
-						HORIZONTAL_ALIGNMENT_LEFT, -1, 60, Color.BLUE)
+	draw_string(default_font, Vector2(-size/2-20*font_scale, 20*font_scale), str(left_value), 
+						HORIZONTAL_ALIGNMENT_LEFT, -1, 60*font_scale, Color.BLUE)
+	draw_string(default_font, Vector2(size/2-20*font_scale, 20*font_scale), str(right_value), 
+						HORIZONTAL_ALIGNMENT_LEFT, -1, 60*font_scale, Color.BLUE)
 
 
 
